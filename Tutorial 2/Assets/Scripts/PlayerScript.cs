@@ -12,12 +12,14 @@ public class PlayerScript : MonoBehaviour
     public Text score;
 
     private int scoreValue = 0;
+    public Text winText;
 
     // Start is called before the first frame update
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
         score.text = scoreValue.ToString();
+        winText.text = "";
     }
 
     // Update is called once per frame
@@ -39,6 +41,9 @@ Application.Quit();
             scoreValue += 1;
             score.text = scoreValue.ToString();
             Destroy(collision.collider.gameObject);
+             if (scoreValue >= 4){
+                winText.text = "You Win! Game Created by Leonardo Bentes";
+            }
         }
 
     }
